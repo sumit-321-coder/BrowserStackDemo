@@ -21,5 +21,8 @@ This code:
 To run the code:
 Execute the testng.xml file as testNG-suite
 
+Default Setting:
+Parallel execution across 5 treads in browserstack cloud platform
+
 To change the number of threads:
 Modify the thread count in testNG.xml file

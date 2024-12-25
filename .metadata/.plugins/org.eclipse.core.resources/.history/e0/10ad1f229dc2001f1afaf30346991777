@@ -1,0 +1,18 @@
+package BrowserStack.Demo;
+
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+import Utility.DriverSetup;
+import Utility.Readproperty;
+
+public class demoTest {
+	Readproperty rp = new Readproperty();
+	DriverSetup ds = new DriverSetup(rp.getproperty("browser"));
+	
+	@Test
+	public void runtest( ) {
+	ds.navigateToUrl("https://elpais.com/");
+	}
+
+}

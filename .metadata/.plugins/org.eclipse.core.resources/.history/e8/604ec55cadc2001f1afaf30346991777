@@ -1,0 +1,14 @@
+package plugins;
+
+import Utility.BasicMethods;
+import Utility.DriverSetup;
+
+public class helper extends BasicMethods{
+
+	
+	
+//	public void navigatetoBaseUrl() {
+//		bm.navigateToUrl(DriverSetup.props.getProperty("baseURL"));
+//	}
+	
+}

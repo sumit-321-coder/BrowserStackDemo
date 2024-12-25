@@ -1,0 +1,21 @@
+package Utility;
+
+import java.io.IOException;
+
+import org.openqa.selenium.WebElement;
+
+public class BasicMethods extends DriverSetup {
+
+
+	
+//	public BasicMethods(){
+//		super();
+//		// TODO Auto-generated constructor stub
+//	}
+	
+	String URL= props.getProperty("baseURL");
+	
+	public void navigateToUrl() {
+		driver.get(URL);
+	}
+}

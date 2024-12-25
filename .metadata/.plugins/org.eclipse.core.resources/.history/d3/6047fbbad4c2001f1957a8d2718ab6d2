@@ -1,0 +1,83 @@
+package BrowserStack.Demo;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
+import org.junit.BeforeClass;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+import Utility.BasicMethods;
+import Utility.DriverSetup;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class demoTest extends BasicMethods {
+
+	public demoTest() {
+		super();
+	}
+
+	String baseURL = props.getProperty("baseURL");
+	String AcceptCookiesXpath = props.getProperty("acceptCookiesXpath");
+	String opinionXpath = props.getProperty("opinionXpath");
+
+	@Parameters({"browserName", "browserVersion", "os", "osVersion"})
+	@BeforeMethod
+	public void initializeDriver(String browserName, String browserVersion, String os, String osVersion) {
+//		public void initializeDriver() {
+//		System.out.println("browser name is : " + browserName);
+//		String methodName = name.getName();
+		
+		DesiredCapabilities caps = new DesiredCapabilities();
+//		caps.setCapability("os", "Windows");
+//		caps.setCapability("osVersion", "10");
+//		caps.setCapability("browserVersion", "120.0");
+//		caps.setCapability("name", methodName);
+		if (browserName.equals("Chrome")) {
+			WebDriverManager.chromedriver().setup();
+			caps.setCapability("browserName", "Chrome");
+		} else if (browserName.equals("Firefox")) {
+			WebDriverManager.firefoxdriver().setup();
+			caps.setCapability("browserName", "Firefox");
+		}
+		try {
+			driver = new RemoteWebDriver(new URL(URL), caps);
+			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+
+	}
+//	public void setup() {
+//		DriverSetup.initializeDriver();
+//	}
+
+	@Test
+	public void navigatetoBaseUrl() {
+		navigateToUrl(baseURL);
+		clickElement(findElement(AcceptCookiesXpath));
+	}
+
+	@Test
+	public void navigatetoOpinionSection() {
+		clickElement(findElement(opinionXpath));
+	}
+
+	@Test
+	public void scrapeArticl() throws MalformedURLException, InterruptedException {
+		getFirstFiveArticle();
+	}
+
+	@AfterSuite
+	public void teardown() {
+		closeDriver();
+	}
+}

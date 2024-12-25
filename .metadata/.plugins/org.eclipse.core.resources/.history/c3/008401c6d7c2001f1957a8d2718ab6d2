@@ -1,0 +1,105 @@
+package Utility;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.MutableCapabilities;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class DriverSetup {
+
+	
+   public static WebDriver driver;
+   public static Properties props;
+   public static final String USERNAME ="divya_4SktZw";
+   public static final String AUTOMATE_KEY ="CxRoMk2qF6YJK1bK4ryb";
+   public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
+	
+public DriverSetup() {
+	try {
+	props=new Properties();
+	FileReader reader=new FileReader("src/main/java/TestData/TestData.properties");  
+    props.load(reader);
+	}catch(FileNotFoundException e) {} catch (IOException e) {
+		e.printStackTrace();
+	}
+	
+	
+}
+	
+
+
+//	public static void initializeDriver() {
+//		String browseraName = props.getProperty("browser");
+//		if(browseraName.equalsIgnoreCase("chrome")) {
+//		System.setProperty("webdriver.chrome.driver", "src/main/java/BrowserStack/Demo/WebDriver/ChromeDriver.exe");
+//		WebDriverManager.chromedriver().setup();
+//		driver= new ChromeDriver();
+//		driver.manage().window().maximize();
+//		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+//		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);}
+//		else if(browseraName.equalsIgnoreCase("firefox")){
+//			WebDriverManager.firefoxdriver().setup();
+//			driver= new FirefoxDriver();
+//			driver.manage().window().maximize();
+//			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+//			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);}
+//		}
+
+		
+
+
+@Parameters({"browserName", "browserVersion", "os", "osVersion"})
+@BeforeSuite
+//public void initializeDriver(String browserName, String browserVersion, String os, String osVersion) {
+	public static void  initializeDriver() {
+//	System.out.println("browser name is : " + browserName);
+//	String methodName = name.getName();
+	
+//	DesiredCapabilities caps = new DesiredCapabilities();
+//	caps.setCapability("os", "Windows");
+//	caps.setCapability("osVersion", "10");
+//	caps.setCapability("browserVersion", "120.0");
+//	caps.setCapability("name", methodName);
+//	if (browserName.equals("Chrome")) {
+//		WebDriverManager.chromedriver().setup();
+//		caps.setCapability("browserName", "Chrome");
+//	} else if (browserName.equals("Firefox")) {
+//		WebDriverManager.firefoxdriver().setup();
+//		caps.setCapability("browserName", "Firefox");
+//	}
+		
+		
+	try {
+		driver = new RemoteWebDriver(new URL(URL), caps);
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	} catch (MalformedURLException e) {
+		e.printStackTrace();
+	}
+
+}
+		
+	}
+	
+	
+
+	

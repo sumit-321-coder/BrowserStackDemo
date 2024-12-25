@@ -1,0 +1,10 @@
+package Utility;
+
+import org.openqa.selenium.WebElement;
+
+public class BasicMethods {
+
+	public void clickWebElement(WebElement element) {
+		element.click();
+	}
+}

@@ -1,0 +1,151 @@
+package Utility;
+
+import java.awt.image.BufferedImage;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+
+import javax.imageio.ImageIO;
+
+import org.json.simple.JSONObject;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.response.ResponseBody;
+import io.restassured.specification.RequestSpecification;
+
+
+
+
+public class LaunchDriver {
+	static WebDriver driver	= new ChromeDriver();
+	
+	public static void launchbrowser() {
+		System.setProperty("webdriver.chrome.driver", "src/main/java/BrowserStack/Demo/WebDriver/ChromeDriver.exe");
+
+		driver.manage().window().maximize();
+
+		driver.get("https://elpais.com/");
+	}
+
+	public static void main(String[] args) throws InterruptedException, MalformedURLException {
+		launchbrowser();
+		navigateToOpinion();
+		getFirstFiveArticle();
+		
+	}
+
+	public static void navigateToOpinion() throws InterruptedException {
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//button[contains(@id,'agree-button')]")).click();
+		driver.findElement(By.xpath("//div[@data-dtm-region='portada_menu']//a[@href='https://elpais.com/opinion/']"))
+				.click();
+	}
+
+	public static void getFirstFiveArticle() throws InterruptedException, MalformedURLException {
+		String EnglishHeaderTitle;
+		String SpanishHeaderTitle="";
+		String CombinedTitle = "";
+		List<WebElement> articlelist = driver.findElements(By.xpath("//h2//a"));
+		ArrayList<String> hreflink = new ArrayList();
+
+		Path imageDirectory = Paths.get("src/main/java/Images");
+
+		for (int i = 0; i < 5; i++) {
+			hreflink.add(articlelist.get(i).getDomAttribute("href"));
+		}
+		int imageCount = 1;
+		for (String link : hreflink) {
+
+			driver.get(link);
+			Thread.sleep(2000);
+
+			try {
+//	printing title
+				SpanishHeaderTitle = driver.findElement(By.xpath("//h1")).getText();
+				System.out.println("Title - " + SpanishHeaderTitle );
+
+//		printing content
+				System.out.println("Content - " + driver.findElement(By.xpath("//h1//ancestor::article//p")).getText());
+
+//		Image saving
+				String SrcUrl = driver.findElement(By.xpath("//h1//ancestor::header//img")).getDomAttribute("src");
+//				System.out.println("image url - " + SrcUrl);
+
+				URL imageUrl = new URL(SrcUrl);
+				Path outputPath = imageDirectory.resolve("image_" + imageCount + ".jpg");
+				InputStream in = imageUrl.openStream();
+				FileOutputStream out = new FileOutputStream(outputPath.toFile());
+				byte[] buffer = new byte[4096];
+				int bytesRead;
+				while ((bytesRead = in.read(buffer)) != -1) {
+					out.write(buffer, 0, bytesRead);
+				}
+				System.out.println("Downloaded image " + imageCount + " to " + outputPath.toString());
+				imageCount++;
+				
+				
+			} catch (NoSuchElementException | IOException Exception) {
+
+			}EnglishHeaderTitle = textTranslate(SpanishHeaderTitle);
+			CombinedTitle= EnglishHeaderTitle+ " "+ CombinedTitle;
+
+		}System.out.println("Combined Title - " + CombinedTitle);
+		countRepeatingWords(CombinedTitle);
+	}
+	
+	public static String textTranslate(String SpanishText) {
+		RestAssured.baseURI = "https://google-translate113.p.rapidapi.com"; 
+		RequestSpecification request = RestAssured.given();
+		JSONObject requestParams = new JSONObject();
+		
+		request.header("Content-Type", "application/json");  
+		request.header("x-rapidapi-key", "92d07edec1msh232fa74a4cb856dp159ed9jsn0aea49fde5cb");
+		request.header("x-rapidapi-host", "google-translate113.p.rapidapi.com");
+		
+		requestParams.put("from", "es"); 
+		requestParams.put("to", "en"); 
+		requestParams.put("text", SpanishText);
+		
+		request.body(requestParams.toJSONString()); 	
+		
+		Response response = request.post("/api/v1/translator/text");
+		
+		JsonPath jsonPathEvaluator = response.jsonPath();
+//		ResponseBody body = response.getBody();
+		 String translation = jsonPathEvaluator.get("trans");
+		System.out.println("Header in English - " +translation);
+		return translation;
+	}
+	
+	public static void countRepeatingWords(String headertext){
+		  Map<String, Integer> hashMap = new HashMap<>();
+		  String[] word = headertext.toLowerCase().split(" ");
+		  for(String eachword: word) {
+			  int count=0;
+			  for(int i=0;i<word.length;i++) {
+				  if(word[i].equalsIgnoreCase(eachword)) {++count;}
+			  }
+			  if (count>2) {hashMap.put(eachword,count);}
+		  }
+		System.out.println("repeated word more than twice is - " + hashMap);
+		
+	}
+}

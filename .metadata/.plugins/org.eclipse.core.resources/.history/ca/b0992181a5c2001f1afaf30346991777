@@ -1,0 +1,25 @@
+package Utility;
+
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+public class BasicMethods extends DriverSetup {
+
+
+	
+
+	
+	public void navigateToUrl(String URL) {
+		driver.get(URL);
+	}
+	
+	public void clickElement(WebElement element) {
+		element.click();
+	}
+	
+	public WebElement findElement(String xpath) {
+	return driver.findElement(By.xpath(xpath));
+	}
+}

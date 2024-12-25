@@ -1,0 +1,41 @@
+package BrowserStack.Demo;
+
+import java.io.IOException;
+
+import org.junit.BeforeClass;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+import Utility.BasicMethods;
+import Utility.DriverSetup;
+import Utility.Readproperty;
+import plugins.helper;
+
+public class demoTest extends BasicMethods {
+
+	public demoTest()  {super();}
+	helper helperclass = new helper();
+	
+	
+	
+	@BeforeTest
+	public void setup() {
+		DriverSetup.initializeDriver();
+	}
+	
+	
+	
+	@Test
+	public void navigatetoNaseUrl( ) {
+		helperclass.navigatetoBaseUrl();
+	}
+	
+
+//	@Test
+//	public void navigatetoOpinion( ) {
+//	navigateToUrl();
+//	}
+
+}

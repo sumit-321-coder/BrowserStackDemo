@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.m2e.Maven2LaunchConfigurationType">
+    <booleanAttribute key="M2_BATCH" value="true"/>
+    <stringAttribute key="M2_GOALS" value="archetype:generate"/>
+    <listAttribute key="M2_PROPERTIES">
+        <listEntry value="archetypeVersion=1.5"/>
+        <listEntry value="archetypeGroupId=com.browserstack"/>
+        <listEntry value="archetypeArtifactId=browserstack-sdk-archetype-integrate"/>
+        <listEntry value="BROWSERSTACK_ACCESS_KEY=NmhBqMtc1jfqqryiBW9A"/>
+        <listEntry value="groupId=com.browserstack"/>
+        <listEntry value="artifactId=java-archetype-integrate"/>
+        <listEntry value="BROWSERSTACK_USERNAME=sumitagarwal8"/>
+        <listEntry value="BROWSERSTACK_FRAMEWORK=java"/>
+        <listEntry value="BUILD_NAME=browserstack build"/>
+        <listEntry value="version=1.0"/>
+        <listEntry value="PROJECT_NAME=BrowserStack Sample"/>
+        <listEntry value="BROWSERSTACK_SOURCE=java:eclipse:v1.0.8"/>
+    </listAttribute>
+    <booleanAttribute key="M2_SAVE_BEFORE_LAUNCH" value="false"/>
+    <booleanAttribute key="org.eclipse.debug.ui.private" value="true"/>
+    <stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="C:\Demo"/>
+</launchConfiguration>

@@ -1,0 +1,48 @@
+package BrowserStack.Demo;
+
+import java.io.IOException;
+
+import org.junit.BeforeClass;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+import Utility.BasicMethods;
+import Utility.DriverSetup;
+import Utility.Readproperty;
+import plugins.helper;
+
+public class demoTest extends BasicMethods {
+
+	public demoTest()  {super();
+	}
+	
+	String baseURL= props.getProperty("baseURL");
+	String AcceptCookiesXpath= props.getProperty("acceptCookiesXpath");
+	String opinionXpath = props.getProperty("opinionXpath");
+	
+	
+	
+	
+	
+	@BeforeSuite
+	public void setup() {
+		DriverSetup.initializeDriver();
+	}
+	
+	
+	
+	@Test
+	public void navigatetoBaseUrl( ) {
+		navigateToUrl(baseURL);
+		clickElement(findElement(opinionXpath));
+	}
+	
+
+	@Test
+	public void navigatetoOpinionSection( ) {
+		clickElement(findElement(opinionXpath));
+	}
+	
+}

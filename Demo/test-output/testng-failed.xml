@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="1" parallel="tests" name="Failed suite [BrowserStack Test automtion regression suite]">
+  <test thread-count="1" parallel="tests" name="BrowserStack Test - Chrome1(failed)">
+    <parameter name="browserVersion" value="120.0"/>
+    <parameter name="browserName" value="Chrome"/>
+    <classes>
+      <class name="BrowserStack.Demo.demoTest">
+        <methods>
+          <include name="initializeDriver"/>
+          <include name="teardown"/>
+          <include name="scrapeArticle"/>
+        </methods>
+      </class> <!-- BrowserStack.Demo.demoTest -->
+    </classes>
+  </test> <!-- BrowserStack Test - Chrome1(failed) -->
+</suite> <!-- Failed suite [BrowserStack Test automtion regression suite] -->

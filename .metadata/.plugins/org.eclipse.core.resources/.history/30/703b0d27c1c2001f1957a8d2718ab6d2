@@ -1,0 +1,18 @@
+userName: sumitagarwal8
+accessKey: NmhBqMtc1jfqqryiBW9A
+framework: testng
+platforms:
+  - os: Windows
+    osVersion: 10
+    browserName: Chrome
+    browserVersion: 120.0
+parallelsPerPlatform: 1
+browserstackLocal: false
+buildName: bstack-demo
+buildIdentifier: bstack-demo
+projectName: BrowserStack Sample
+testObservability: true
+networkLogs: true
+consoleLogs: info
+percy: true
+percyCaptureMode: auto

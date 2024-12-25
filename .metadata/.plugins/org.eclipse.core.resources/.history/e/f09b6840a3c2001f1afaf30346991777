@@ -1,0 +1,37 @@
+package BrowserStack.Demo;
+
+import java.io.IOException;
+
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+import Utility.BasicMethods;
+import Utility.DriverSetup;
+import Utility.Readproperty;
+
+public class demoTest extends BasicMethods {
+
+	public demoTest()  {super();}
+	String URL = props.getProperty("baseURL");
+	
+	@BeforeTest
+	public void setup() {
+		DriverSetup.initializeDriver();
+	}
+	
+	
+	
+	@Test
+	public void navigatetoNaseUrl( ) {
+	navigateToUrl();
+	}
+	
+
+//	@Test
+//	public void navigatetoOpinion( ) {
+//	navigateToUrl();
+//	}
+
+}

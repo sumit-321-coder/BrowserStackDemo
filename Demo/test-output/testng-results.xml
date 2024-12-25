@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-12-25T23:08:37 IST" name="BrowserStack Test automtion regression suite" finished-at="2024-12-25T23:10:32 IST" duration-ms="114283">
+    <groups>
+    </groups>
+    <test started-at="2024-12-25T23:08:37 IST" name="BrowserStack Test - Chrome1" finished-at="2024-12-25T23:10:32 IST" duration-ms="114283">
+      <class name="BrowserStack.Demo.demoTest">
+        <test-method is-config="true" signature="initializeDriver(java.lang.String,java.lang.String)[pri:0, instance:BrowserStack.Demo.demoTest@3185fa6b]" started-at="2024-12-25T23:08:37 IST" name="initializeDriver" finished-at="2024-12-25T23:08:52 IST" duration-ms="14503" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[120.0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeDriver -->
+        <test-method signature="navigatetoBaseUrl()[pri:0, instance:BrowserStack.Demo.demoTest@3185fa6b]" started-at="2024-12-25T23:08:52 IST" name="navigatetoBaseUrl" finished-at="2024-12-25T23:09:02 IST" duration-ms="9765" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigatetoBaseUrl -->
+        <test-method signature="navigatetoOpinionSection()[pri:0, instance:BrowserStack.Demo.demoTest@3185fa6b]" started-at="2024-12-25T23:09:02 IST" name="navigatetoOpinionSection" finished-at="2024-12-25T23:09:12 IST" duration-ms="10170" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigatetoOpinionSection -->
+        <test-method signature="scrapeArticle()[pri:0, instance:BrowserStack.Demo.demoTest@3185fa6b]" started-at="2024-12-25T23:09:12 IST" name="scrapeArticle" finished-at="2024-12-25T23:10:32 IST" duration-ms="79649" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- scrapeArticle -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:BrowserStack.Demo.demoTest@3185fa6b]" started-at="2024-12-25T23:10:33 IST" name="teardown" finished-at="2024-12-25T23:10:34 IST" duration-ms="1257" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- BrowserStack.Demo.demoTest -->
+    </test> <!-- BrowserStack Test - Chrome1 -->
+  </suite> <!-- BrowserStack Test automtion regression suite -->
+</testng-results>

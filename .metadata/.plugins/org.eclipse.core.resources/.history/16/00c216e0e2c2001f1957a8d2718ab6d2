@@ -1,0 +1,12 @@
+userName: divya_4SktZw
+accessKey: CxRoMk2qF6YJK1bK4ryb
+framework: testng
+platforms:
+  - os: Windows
+    osVersion: 10
+    browserName: Firefox
+    browserVersion: latest
+parallelsPerPlatform: 1
+browserstackLocal: false
+buildName: browserstack-build-1
+projectName: BrowserStack Sample

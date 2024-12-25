@@ -1,0 +1,29 @@
+package BrowserStack.Demo;
+
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+import Utility.BasicMethods;
+import Utility.DriverSetup;
+import Utility.Readproperty;
+
+public class demoTest extends BasicMethods {
+
+	public demoTest() {super();}
+	
+	
+	@BeforeSuite
+	public void setup() {
+		DriverSetup.initializeDriver();
+	}
+	
+	
+	
+	@Test
+	public void runtest( ) {
+	navigateToUrl("https://elpais.com/");
+	}
+
+}

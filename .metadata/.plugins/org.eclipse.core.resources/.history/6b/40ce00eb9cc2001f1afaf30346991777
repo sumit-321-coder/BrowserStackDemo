@@ -1,0 +1,11 @@
+package Utility;
+
+import org.openqa.selenium.WebElement;
+
+public class BasicMethods extends DriverSetup{
+
+	String URl = DriverSetup.props.getProperty("browser");
+	public void navigateToUrl(String url) {
+		DriverSetup.driver.get(URl);
+	}
+}

@@ -1,0 +1,16 @@
+package BrowserStack.Demo;
+
+import org.testng.annotations.Test;
+
+import Utility.DriverSetup;
+
+public class demoTest {
+	
+	DriverSetup ds = new DriverSetup();
+	
+	@Test
+	public void runtest() {
+	ds.setup();
+	}
+
+}

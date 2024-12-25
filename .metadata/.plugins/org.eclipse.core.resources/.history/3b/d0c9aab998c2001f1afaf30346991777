@@ -1,0 +1,21 @@
+package Utility;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
+
+public class Readproperty {
+	static Properties props;
+	public Readproperty(String prp) throws IOException {
+		
+			FileReader reader=new FileReader("src/main/java/TestData/TestData.properties");
+			props=new Properties();
+	        props.load(reader);
+	      
+	    		   
+	}   		   }
+		
+	
+
+

@@ -1,0 +1,8 @@
+baseURL=https://elpais.com/
+browser=chrome
+acceptCookiesXpath=//button[contains(@id,'agree-button')]
+opinionXpath=//div[@data-dtm-region='portada_menu']//a[@href='https://elpais.com/opinion/']
+artcileXpath=//h2//a
+headerXpath=//h1
+contentXpath=//h1//ancestor::article//p
+imgXpath=//h1//ancestor::header//img

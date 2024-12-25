@@ -1,0 +1,8 @@
+package Utility;
+
+public class Readproperty {
+	public readFromPropertyFile() {
+		FileReader reader=new FileReader("C:\\Users\\ADMIN\\eclipse-workspace\\GFG_MAven\\src\\main\\java\\GFG_Maven\\GFG_MAven\\TestData.properties");
+	}
+
+}

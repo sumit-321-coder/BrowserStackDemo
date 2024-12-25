@@ -1,0 +1,12 @@
+userName: sumitagarwal8
+accessKey: NmhBqMtc1jfqqryiBW9A
+framework: testng
+platforms:
+  - os: Windows
+    osVersion: 10
+    browserName: Firefox
+    browserVersion: latest
+parallelsPerPlatform: 1
+browserstackLocal: false
+buildName: browserstack-build-1
+projectName: BrowserStack Sample

@@ -1,0 +1,60 @@
+package Utility;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class DriverSetup {
+
+	
+   public static WebDriver driver;
+   public static Properties props;
+	
+	
+public DriverSetup() {
+	try {
+	props=new Properties();
+	FileReader reader=new FileReader("src/main/java/TestData/TestData.properties");  
+    props.load(reader);
+	}catch(FileNotFoundException e) {} catch (IOException e) {
+		e.printStackTrace();
+	}
+	
+	
+}
+	
+
+@Parameters
+	public static void initializeDriver() {
+		String browseraName = props.getProperty("browser");
+		if(browseraName.equalsIgnoreCase("chrome")) {
+		System.setProperty("webdriver.chrome.driver", "src/main/java/BrowserStack/Demo/WebDriver/ChromeDriver.exe");
+		WebDriverManager.chromedriver().setup();
+		driver= new ChromeDriver();}
+		else if(browseraName.equalsIgnoreCase("firefox")){
+			WebDriverManager.firefoxdriver().setup();
+			driver= new FirefoxDriver();}
+		}
+		driver.manage().window().maximize();
+		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+	}
+	
+	
+
+	
+}

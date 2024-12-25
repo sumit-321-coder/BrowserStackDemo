@@ -1,0 +1,21 @@
+package Utility;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
+
+public class Readproperty {
+	
+//	public void readFromPropertyFile(String prp) throws IOException {
+//		
+//			FileReader reader=new FileReader("src/main/java/TestData/TestData.properties");
+//			Properties props=new Properties();
+//	        props.load(reader);
+//	       (LaunchDriver.getDriver()).get(props.getProperty(prp));
+//	    		   
+	}   		   
+		
+	
+
+

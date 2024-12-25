@@ -1,0 +1,19 @@
+package Utility;
+
+import org.openqa.selenium.WebElement;
+
+public class BasicMethods extends DriverSetup {
+
+
+	
+	public BasicMethods() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	String URl = props.getProperty("browser");
+	
+	public void navigateToUrl() {
+		System.out.println("URL is ++++++ " + URl);
+		DriverSetup.driver.get(URl);
+	}
+}

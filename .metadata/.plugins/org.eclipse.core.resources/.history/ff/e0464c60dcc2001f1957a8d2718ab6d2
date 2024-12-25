@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<suite name="BrowserStack Test automtion regression suite"
+	thread-count="1" parallel="tests" verbose="1">
+
+
+	
+
+	<test name="BrowserStack Test - Chrome">
+	<parameter name="os" value="Windows" />
+		<parameter name="osVersion" value="10" />
+		<parameter name="browser" value="Firefox" />
+		<parameter name="browserVersion" value="80.0"/>
+		<classes>
+			<class name="BrowserStack.Demo.demoTest" />
+					</classes>
+
+	</test>
+	
+	<test name="BrowserStack Test - firefox">
+		<parameter name="os" value="Windows" />
+		<parameter name="osVersion" value="11" />
+		<parameter name="browser" value="Chrome" />
+		<parameter name="browserVersion" value="120.0" />
+
+		<classes>
+			<class name="BrowserStack.Demo.demoTest" />
+		</classes>
+
+	</test>
+
+
+
+
+
+
+
+
+
+
+</suite>
